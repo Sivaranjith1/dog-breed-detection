@@ -6,7 +6,7 @@ import pickle
 import os
 
 #%%
-Dimentions = 600
+Dimentions = 128
 Layers = 3
 NAME = "Dog-breed-detection-{}x{}".format(Dimentions, Layers)
 
@@ -23,13 +23,13 @@ model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.5))
 
 for i in range(Layers - 1):
-    model.add(Conv2D(360, (3,3)))
+    model.add(Conv2D(64, (3,3)))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2,2)))
     model.add(Dropout(0.4))
 
 model.add(Flatten())
-model.add(Dense(480))
+model.add(Dense(64))
 model.add(Activation('relu'))
 
 model.add(Dense(120))
